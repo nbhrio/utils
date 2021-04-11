@@ -1,0 +1,26 @@
+{
+  "name": "@nbhr/utils",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "preinstall": "npx -y only-allow npm",
+    "prepublishOnly": "rimraf dist && npm run build",
+    "test": "c8 --all --include src uvu -r sucrase/register tests",
+    "dev": "npm run build -- --watch",
+    "build": "tsup ./src/index.ts --dts --format esm,cjs --minify"
+  },
+  "author": "Alexander Niebuhr <45965090+alexanderniebuhr@users.noreply.github.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "*",
+    "c8": "*",
+    "rimraf": "*",
+    "ts-standard": "*",
+    "tsup": "*",
+    "typescript": "*",
+    "uvu": "*"
+  }
+}
