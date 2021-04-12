@@ -24,6 +24,6 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm run build
-      - run: npx -y release-it --github.release --npm.publish --no-increment --no-git --ci
+      - run: npx release-it --github.release --npm.publish --no-increment --no-git --ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
