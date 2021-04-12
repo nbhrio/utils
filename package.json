@@ -13,13 +13,19 @@
     "prepublishOnly": "rimraf dist && npm run build",
     "test": "c8 --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
-    "build": "tsup ./src/index.ts --dts --format esm,cjs --minify"
+    "build": "tsup ./src/index.ts --dts --format esm,cjs --minify",
+    "release": "release-it --no-npm.publish"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "author": "Alexander Niebuhr <45965090+alexanderniebuhr@users.noreply.github.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "*",
+    "auto-changelog": "*",
     "c8": "*",
+    "release-it": "*",
     "rimraf": "*",
     "ts-standard": "*",
     "tsup": "*",
