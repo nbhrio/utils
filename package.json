@@ -9,12 +9,11 @@
     "dist/**/*"
   ],
   "scripts": {
-    "preinstall": "npx -y only-allow npm",
-    "prepublishOnly": "rimraf dist && npm run build",
+    "bluid:clean": "rimraf dist && npm run build",
     "test": "c8 --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
     "build": "tsup ./src/index.ts --dts --format esm,cjs --minify",
-    "release": "release-it --no-npm.publish"
+    "release": "npm run bluid:clean && release-it --no-npm.publish"
   },
   "publishConfig": {
     "access": "public"
