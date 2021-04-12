@@ -4,6 +4,10 @@
     "commitMessage": "chore: :bookmark: release v${version}"
   },
   "hooks": {
-    "after:bump": "npx auto-changelog -p"
+    "after:bump": "npx auto-changelog -p",
+    "before:init": [
+      "npm run test",
+      "npm run bluid:clean"
+    ]
   }
 }
