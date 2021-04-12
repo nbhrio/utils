@@ -14,6 +14,9 @@ jobs:
   release:
       # Operating System
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     # Job steps
     steps:
         # 👇 Version 2 of the action
@@ -24,6 +27,6 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm run build
-      - run: npx release-it --github.release --npm.publish --no-increment --no-git --ci
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Generate .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - run: npx release-it --github.release --npm.publish --npm.skipChecks --no-increment --no-git --ci
