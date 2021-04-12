@@ -29,4 +29,4 @@ jobs:
       - run: npm run build
       - name: Generate .npmrc
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-      - run: npx release-it --github.release --npm.publish --npm.skipChecks --no-increment --no-git --git.changelog --ci
+      - run: npx release-it --github.release --npm.publish --npm.skipChecks --no-increment --no-git.tag --no-git.push --no-git.commit --ci
