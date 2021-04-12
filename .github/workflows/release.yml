@@ -1,0 +1,29 @@
+# .github/workflows/release.yml
+
+# Workflow name
+name: 'Release'
+
+# Event for the workflow
+on:
+  push:
+    tags:
+      - v*
+
+# List of jobs
+jobs:
+  release:
+      # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+        # 👇 Version 2 of the action
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+          node-version: 14
+      - run: npm ci
+      - run: npm run build
+      - run: npx -y release-it --github.release --npm.publish --no-increment --no-git --ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
