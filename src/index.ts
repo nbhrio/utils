@@ -1,2 +1,2 @@
-export * as loader from './loader'
+export * as useConfig from './loader'
 export * from './math'

@@ -1,7 +1,7 @@
 import { pathToFileURL } from 'url'
 import { resolve } from 'path'
 
-export async function config (file: string): Promise<any> {
+export async function load (file: string): Promise<any> {
   const path = resolve(file)
   const fileURL = pathToFileURL(path)
   let parsed = {}
