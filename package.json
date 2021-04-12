@@ -9,7 +9,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "bluid:clean": "rimraf dist && npm run build",
+    "build:clean": "rimraf dist && npm run build",
     "test": "c8 --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
     "build": "tsup ./src/index.ts --dts --format esm,cjs --minify",

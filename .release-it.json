@@ -7,7 +7,7 @@
     "after:bump": "npx auto-changelog -p",
     "before:init": [
       "npm run test",
-      "npm run bluid:clean"
+      "npm run build:clean"
     ]
   }
 }
