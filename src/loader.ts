@@ -4,7 +4,7 @@ import { resolve } from 'path'
 export async function load (file: string): Promise<any> {
   const path = resolve(file)
   const fileURL = pathToFileURL(path)
-  let parsed = {}
+  let parsed: any = {}
   if (path.endsWith('.ts')) {
     console.warn('Typescript currently not supported')
   } else {
@@ -12,7 +12,9 @@ export async function load (file: string): Promise<any> {
   // eslint-disable-next-line no-new-func
     const _import = new Function('modulePath', 'return import(modulePath)')
     parsed = await _import(fileURL)
-
+    if (parsed.default !== null || parsed.default !== undefined) {
+      parsed = parsed.default
+    }
     return parsed
   }
 }
