@@ -2,8 +2,13 @@
   "name": "@nbhr/utils",
   "version": "0.0.18",
   "description": "",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
   "files": [
     "dist/**/*"
   ],
@@ -11,7 +16,7 @@
     "build:clean": "rimraf dist && npm run build",
     "test": "c8 --reporter=lcov --reporter=text --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
-    "build": "tsup ./src/index.ts --dts --format esm",
+    "build": "tsup ./src/index.ts --dts --format cjs,esm --out-dir dist",
     "release": "release-it --no-npm.publish --github.release"
   },
   "publishConfig": {
