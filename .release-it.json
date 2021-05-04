@@ -1,6 +1,6 @@
 {
   "git": {
-    "changelog": "npx auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
+    "changelog": "npx auto-changelog --stdout --commit-limit false --unreleased --template https://gist.githubusercontent.com/alexanderniebuhr/5d1122517df4c40b1cb4c7e17a817b94/raw/e5767cf0386bb039dae35100fbfea36751d3b49c/changelog.hbs",
     "commitMessage": "chore: :bookmark: release v${version}"
   },
   "hooks": {
