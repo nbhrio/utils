@@ -25,9 +25,9 @@
   "author": "Alexander Niebuhr <45965090+alexanderniebuhr@users.noreply.github.com>",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "15.0.1",
+    "@types/node": "15.0.2",
     "auto-changelog": "2.2.1",
-    "c8": "7.7.1",
+    "c8": "7.7.2",
     "release-it": "14.6.1",
     "rimraf": "3.0.2",
     "sucrase": "3.18.1",
