@@ -2,12 +2,23 @@
   "name": "@nbhr/utils",
   "version": "0.0.24",
   "description": "",
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./fs": {
+      "require": "./dist/fs/index.js",
+      "import": "./dist/fs/index.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "fs": [
+        "./dist/types/fs.d.ts"
+      ]
+    }
   },
   "files": [
     "dist/**/*"
@@ -16,7 +27,8 @@
     "build:clean": "rimraf dist && npm run build",
     "test": "c8 --reporter=lcov --reporter=text --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
-    "build": "tsup ./src/index.ts --dts --format cjs,esm --out-dir dist",
+    "build": "esbuild src/index.ts src/fs/index.ts --bundle --outdir=dist --platform=node --format=esm --out-extension:.js=.mjs --splitting && esbuild src/index.ts src/fs/index.ts --bundle --outdir=dist --platform=node --format=cjs && npm run types",
+    "types": "npx tsc src/index.ts --declaration --emitDeclarationOnly --outfile dist/types/index.d.ts && npx tsc src/fs/index.ts --declaration --emitDeclarationOnly --outfile dist/types/fs.d.ts",
     "release": "release-it --no-npm.publish --github.release"
   },
   "publishConfig": {
