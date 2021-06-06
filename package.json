@@ -11,12 +11,19 @@
     "./fs": {
       "require": "./dist/fs/fs.js",
       "import": "./dist/fs/fs.mjs"
+    },
+    "./debugger": {
+      "require": "./dist/debugger/debugger.js",
+      "import": "./dist/debugger/debugger.mjs"
     }
   },
   "typesVersions": {
     "*": {
       "fs": [
         "./dist/fs.d.ts"
+      ],
+      "debugger": [
+        "./dist/debugger.d.ts"
       ]
     }
   },
@@ -27,7 +34,7 @@
     "build:clean": "rimraf dist && npm run build",
     "test": "c8 --reporter=lcov --reporter=text --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts src/fs/fs.ts --dts --format cjs,esm --out-dir dist",
+    "build": "tsup src/index.ts src/fs/fs.ts src/debugger/debugger.ts --dts --format cjs,esm --out-dir dist",
     "build:old": "esbuild src/index.ts src/fs/index.ts --bundle --outdir=dist --platform=node --format=esm --out-extension:.js=.mjs --splitting && esbuild src/index.ts src/fs/index.ts --bundle --outdir=dist --platform=node --format=cjs && npm run types",
     "types": "npx tsc src/index.ts --declaration --emitDeclarationOnly --outdir dist/types && npx tsc src/fs/index.ts --declaration --emitDeclarationOnly --outdir dist/fs/types",
     "release": "release-it --no-npm.publish --github.release"
