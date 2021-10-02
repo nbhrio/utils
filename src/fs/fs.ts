@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from 'fs'
 import { resolve, join, normalize } from 'path'
 
-export function walkSync (path: string): string[] {
+export function walkSync(path: string): string[] {
   let files: string[] = []
   const filesInPath = readdirSync(path)
   filesInPath.forEach((file) => {
