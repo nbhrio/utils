@@ -1,5 +1,5 @@
-import { readdirSync, statSync } from 'fs'
-import { resolve, join, normalize } from 'path'
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'fs'
+import { join, normalize, relative, resolve } from 'path'
 
 export function walkSync(path: string): string[] {
   let files: string[] = []
@@ -14,4 +14,16 @@ export function walkSync(path: string): string[] {
     }
   })
   return files
+}
+
+export function cpFolderSync(src: string, dest: string) {
+  // make sure the directory exists before stuff gets put into into
+  if (!existsSync(dest)) {
+    mkdirSync(dest)
+  }
+  const files = readdirSync(src)
+  for (const file of files) {
+    const relativePath = relative(src, file)
+    copyFileSync(file, join(dest, relativePath))
+  }
 }
