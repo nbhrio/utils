@@ -5,9 +5,6 @@
   },
   "hooks": {
     "after:bump": "npx auto-changelog -p",
-    "before:init": [
-      "npm run test",
-      "npm run build:clean"
-    ]
+    "before:init": ["npm run build:clean"]
   }
 }

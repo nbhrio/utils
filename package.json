@@ -18,10 +18,10 @@
   "typesVersions": {
     "*": {
       "fs": [
-        "./dist/fs.d.ts"
+        "./dist/fs/fs.d.ts"
       ],
       "debugger": [
-        "./dist/debugger.d.ts"
+        "./dist/debugger/debugger.d.ts"
       ]
     }
   },
@@ -32,7 +32,7 @@
     "build:clean": "rimraf dist && npm run build",
     "test": "c8 --reporter=lcov --reporter=text --all --include src uvu -r sucrase/register tests",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts src/fs/fs.ts src/debugger/debugger.ts --dts --format esm --out-dir dist --no-splitting",
+    "build": "tsup src/index.ts src/fs/fs.ts src/debugger/debugger.ts --dts --format esm --out-dir dist",
     "release": "release-it --no-npm.publish --github.release"
   },
   "publishConfig": {
